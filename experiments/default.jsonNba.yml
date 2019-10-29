@@ -1,0 +1,10 @@
+# This file was edited by rollout.io
+# URL: https://app.rollout.io/ex/5db84e5276a6c4160062d9db
+type: experiment
+name: json nba
+flag: default.jsonNba
+availableValues:
+  - j3
+  - j2
+  - j1
+value: []
