@@ -7,4 +7,10 @@ availableValues:
   - j3
   - j2
   - j1
+conditions:
+  - property:
+      name: playlist_count
+      operator: eq
+      operand: 32
+    value: []
 value: []
