@@ -1,10 +1,10 @@
 # This file was edited by rollout.io
-# URL: https://app.rollout.io/ex/5c2cd836d2b77a49cf307378
+# URL: https://app.rollout.io/ex/5d5440eaf56eca4b470173eb
 type: experiment
 name: history
 flag: default.history
 conditions:
   - group:
-      name: Paying user
+      name: Paying user long name
     value: true
 value: false
