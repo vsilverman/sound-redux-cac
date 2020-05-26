@@ -1,0 +1,9 @@
+# This file was edited by rollout.io
+# URL: https://app.rollout.io/ex/5eccea22744f80409c7f5832
+type: experiment
+name: pricing
+flag: default.pricing
+availableValues:
+  - high
+  - free
+value: []
