@@ -6,4 +6,11 @@ flag: default.pricing
 availableValues:
   - high
   - free
-value: []
+  - med
+value:
+  - percentage: 33
+    option: high
+  - percentage: 33
+    option: free
+  - percentage: 34
+    option: med
