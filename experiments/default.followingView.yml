@@ -1,6 +1,7 @@
-# This file was edited by rollout.io
-# URL: https://app.rollout.io/ex/5ea2fb4501c81e3999248339
+# This file was edited by Cloudbees Feature Flags
 type: experiment
 name: following view
 flag: default.followingView
-value: false
+conditions:
+  - value: false
+value: true
