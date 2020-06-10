@@ -4,6 +4,10 @@ name: following view
 flag: default.followingView
 conditions:
   - value: false
+  - dependency:
+      flag: default.playlist
+      value: 'true'
+    value: false
 value:
   - percentage: 5
     option: true
