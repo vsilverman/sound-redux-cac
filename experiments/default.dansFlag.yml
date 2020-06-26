@@ -1,6 +1,6 @@
-# This file was edited by rollout.io
-# URL: https://app.rollout.io/ex/5eccea48744f806ea37f5839
+# This file was edited by Cloudbees Feature Flags
 type: experiment
 name: dans flag
+description: 'nksfndsfn '
 flag: default.dansFlag
 value: false
