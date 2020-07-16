@@ -8,12 +8,8 @@ conditions:
       flag: default.playlist
       value: 'true'
     value: false
-  - property:
-      name: tenant
-      operator: in-array
-      operand:
-        - Client1
-        - Client2
+  - group:
+      name: Tenant1 Admin
     value:
       - percentage: 5
         option: true
