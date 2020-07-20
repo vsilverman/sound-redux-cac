@@ -1,13 +1,13 @@
-![ROX by Rollout](https://1ko9923xosh2dsbjsxpwqp45-wpengine.netdna-ssl.com/wp-content/themes/rollout/images/rollout_white_logo1.png)
+![CloudBees Feature Flags](https://1ko9923xosh2dsbjsxpwqp45-wpengine.netdna-ssl.com/wp-content/themes/rollout/images/rollout_white_logo1.png)
 
-[![Integration status](https://app.rollout.io/badges/5c2378f79ba2472b8585cf22)](https://app.rollout.io/app/5990c4a1eae09726fa0d6041/settings/info)
+[![Integration status](https://app.rollout.io/badges/5f15dabbb6e06d7d47d40369)](https://app.rollout.io/app/5e332516f5c458000a51707f/settings/info)
 
 This repository is a YAML represnetation for Rollout configuration, it is connected (see badge for status) to Rollout service via [Rollout's github app](https://github.com/apps/rollout-io)
 Configuration as code allows the entire configuration of Rollout's state to be stored as source code. It integrates Rollout's UI with engineering existing environment. This approach brings a lot of benefits.
 
 
-# What is Rollout 
-Rollout is a multi-platform, infrastructure as code, open source, software as a service feature management and remote configuration solution. 
+# What is Rollout
+Rollout is a multi-platform, infrastructure as code, software as a service feature management and remote configuration solution.
 
 # What Are Feature Flags
 
@@ -21,7 +21,7 @@ You can read more about the Advantages of having Rollout configuration stored an
 # Repository, Directories and YAML structure
 ## Branches are Environments
 
-Every environment on Rollout dashboard is mapped to a branch in git. The same name that is used for the environment will be used for the branch name. The only exception being Production environment which is mapped to `master` branch 
+Every environment on Rollout dashboard is mapped to a branch in git. The same name that is used for the environment will be used for the branch name. The only exception being Production environment which is mapped to `master` branch
 
 ## Directory structure
 
@@ -31,7 +31,7 @@ Rollout repository integration creates the following directory structure:
 ├── experiments             # Experiments definitions
 │   └──  archived           # Archived experiments definitions
 ├── target_groups           # Target groups definitions
-└── README.md              
+└── README.md
 ```
 
 - All experiments are located under the experiment folder
@@ -39,7 +39,7 @@ Rollout repository integration creates the following directory structure:
 
 ## Experiment Examples
 
-### False for all users 
+### False for all users
 ```yaml
 flag: default.followingView
 type: experiment
@@ -91,7 +91,7 @@ Dashboard default platfrom configuration:
 ![dashboard](https://files.readme.io/461c854-Screen_Shot_2018-12-04_at_10.19.59.png)
 Dashboard Android configuration:
 ![dashboard](https://files.readme.io/1aafd04-Screen_Shot_2018-12-03_at_21.39.52.png)
-## Experiment YAML 
+## Experiment YAML
 
 This section describes the yaml scheme for an experiment. It is a composite of 3 schemas:
 
@@ -104,45 +104,45 @@ This section describes the yaml scheme for an experiment. It is a composite of 3
 
 
 
-### Root Schema 
+### Root Schema
 An Experiment controls the flag value in runtime:
 
 ```yaml
-# Yaml api version 
+# Yaml api version
 # Optional: defaults to "1.0.0"
-version: Semver 
+version: Semver
 
 # Yaml Type (required)
-type: "experiment" 
+type: "experiment"
 
 # The flag being controlled by this experiment (required)
-flag: String 
+flag: String
 
 # The available values that this flag can be
 # Optional=[false, true]
-availableValues: [String|Bool] 
+availableValues: [String|Bool]
 
 # The name of the experiment
 # Optional: default flag name
-name: String 
+name: String
 
-# The Description of the experiment 
+# The Description of the experiment
 # Optional=""
-description: String 
+description: String
 
 # Indicates if the experiment is active
 # Optional=true
-enabled: Boolean 
+enabled: Boolean
 
 # Expriment lables
 # Optional=[]
-labels: [String]|String 
+labels: [String]|String
 
-# Stickiness property that controls percentage based tossing 
+# Stickiness property that controls percentage based tossing
 # Optional="rox.distict_id"
 stickinessProperty: String
 
-# Platfrom explicit targeting 
+# Platfrom explicit targeting
 # Optional=[]
 platforms: [Platfrom]  # see Platfrom schema
 
@@ -152,9 +152,9 @@ conditions: [Condition] # see Condition schema
 
 # Value when no Condition is met
 # Optional
-#  false for boolean flags 
-#  [] for enum flags  (indicates default value)
-value: String|Boolean|[SplitedValue]|[ScheduledValue]
+#  false for boolean flags
+#  null for enum flags  (indicates default value)
+value: String|Boolean|[SplitedValue]|[ScheduledValue]|null
 ```
 
 ### SplitedValue Schema
@@ -163,8 +163,8 @@ value: String|Boolean|[SplitedValue]|[ScheduledValue]
 # Optional=100
 percentage: Number
 
-# The Value to be delivered 
-option: String|Boolean 
+# The Value to be delivered
+option: String|Boolean
 ```
 ### ScheduledValue Schema
 ```yaml
@@ -180,10 +180,10 @@ percentage: Number
 
 The Condition is a pair of condition and value, an array of conditions can be viewed as an if-else statement by the order of conditions
 
-The schema contains three types of condition statements 
+The schema contains three types of condition statements
 - Dependency - express flag dependencies, by indicating flag name and expected value
-- Groups - a list of target-groups and the operator that indicates the relationship between them (`or`|`and`|`not`) 
-- Version -  comparing the version of 
+- Groups - a list of target-groups and the operator that indicates the relationship between them (`or`|`and`|`not`)
+- Version -  comparing the version of
 [/block]
 The relationship between these items is `and`, meaning:
        If the dependency is met `and` Groups matches `and` Version matches  `then` flage=value
@@ -191,31 +191,31 @@ The relationship between these items is `and`, meaning:
 Here is the Condition schema
 ```yaml
 # Condition this flag value with another flag value
-dependency: 
+dependency:
     # Flag Name
     flag: String
-    # The expected Flag Value 
+    # The expected Flag Value
     value: String|Boolean
 
 # Condition flag value based on target group(s)
-group: 
-    # The logical relationship between the groups 
+group:
+    # The logical relationship between the groups
     # Optional = or
     operator: or|and|not
-    
+
     # Name of target groups
     name: [String]|String
 
 # Condition flag value based release version
-version: 
-    # The operator to compare version 
+version:
+    # The operator to compare version
     operator: semver-gt|semver-gte|semver-eq|semver-ne|semver-lt|semver-lte
 
-    # The version to compare to 
+    # The version to compare to
     semver: Semver
 
 # Value when Condition is met
-value: String|Boolean|[SplitedValue]|[ScheduledValue] 
+value: String|Boolean|[SplitedValue]|[ScheduledValue]|null
 ```
 ### Platform Schema
 The platform object indicates a specific targeting for a specific platform
@@ -234,9 +234,9 @@ conditions: [Condition] # see Condition schema
 
 # Value when no Condition is met
 # Optional
-#  false for boolean flags 
-#  [] for enum flags  (indicates default value)
-value: String|Boolean|[SplitedValue]|[ScheduledValue] # see Value schema
+#  false for boolean flags
+#  null for enum flags  (indicates default value)
+value: String|Boolean|[SplitedValue]|[ScheduledValue]|null # see Value schema
 ```
 
 
@@ -276,7 +276,7 @@ On rollout Dashboard
 A Target group is a set of rules on top of custom properties that are defined in runtime, it is used in experiments conditions
 
 ```yaml
-# Yaml api version 
+# Yaml api version
 # Optional: defaults to "1.0.0"
 version: Semver
 
@@ -290,12 +290,16 @@ name: String
 # Optional = ""
 description: String
 
+# The logical relationship between conditions
+# Optional = and
+operator: or|and
+
 # Array of Conditions that have a logical AND relationship between them
-conditions: 
+conditions:
     # The Custom property to be conditioned (first operand)
   - property: String
 
-    # The Operator of the confition 
+    # The Operator of the confition
     operator: is-undefined|is-true|is-false|eq|ne|gte|gt|lt|lte|regex|semver-gt|semver-eq|semver-gte|semver-gt|semver-lt|semver-lte
 
     # The Second operand of the condition

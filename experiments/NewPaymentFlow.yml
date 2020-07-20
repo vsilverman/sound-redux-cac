@@ -1,5 +1,0 @@
-# This file was edited by Cloudbees Feature Flags
-type: experiment
-name: new payment flow
-flag: NewPaymentFlow
-value: false
